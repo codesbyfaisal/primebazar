@@ -26,5 +26,10 @@ app.use('/images', imagesRouter)
 app.use('/cart', cartRouter)
 app.use('/order', orderRouter)
 
+// Route Api
+app.get('/', (req, res) => {
+  res.send('API is running...');
+});
+
 // Listen
 app.listen(port, () => console.log(`Server running on port: ${port}`))
