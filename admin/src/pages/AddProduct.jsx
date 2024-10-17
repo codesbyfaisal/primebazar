@@ -6,7 +6,7 @@ import { ProductsContext } from "../context/ProductsContext.jsx";
 
 const AddProduct = () => {
   const { getProductsList, serverUrl } = useContext(ProductsContext);
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const [productName, setProductName] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("Men");
@@ -35,12 +35,14 @@ const AddProduct = () => {
   const handleSizeChange = (size) => {
     setSizes((prev) => {
       if (size === "One Size") {
-        return prev.includes("One Size") ? prev.filter(s => s !== "One Size") : [...prev.filter(s => s === "One Size"), "One Size"];
+        return prev.includes("One Size")
+          ? prev.filter((s) => s !== "One Size")
+          : [...prev.filter((s) => s === "One Size"), "One Size"];
       } else {
         if (prev.includes(size)) {
-          return prev.filter(s => s !== size);
+          return prev.filter((s) => s !== size);
         } else {
-          return [...prev.filter(s => s !== "One Size"), size];
+          return [...prev.filter((s) => s !== "One Size"), size];
         }
       }
     });
@@ -48,26 +50,26 @@ const AddProduct = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true)
+    setLoading(true);
 
     if (description.length < 20) {
       toast.error("Product description must be at least 20 characters long.");
-      setLoading(false)
+      setLoading(false);
       return;
     }
     if (sizes.length === 0) {
       toast.error("At least one size must be selected for the product.");
-      setLoading(false)
+      setLoading(false);
       return;
     }
     if (images.filter((img) => img !== null).length === 0) {
       toast.error("Please upload at least one image.");
-      setLoading(false)
+      setLoading(false);
       return;
     }
-    if (sale && saleOff === '') {
+    if (sale && saleOff === "") {
       toast.error("Sale is selected, but no sale discount is provided.");
-      setLoading(false)
+      setLoading(false);
       return;
     }
 
@@ -106,8 +108,8 @@ const AddProduct = () => {
       const data = await response.json();
 
       if (data.success) {
-        toast.success(data.message)
-        getProductsList()
+        toast.success(data.message);
+        getProductsList();
 
         // Reset form fields after submission
         setProductName("");
@@ -123,13 +125,13 @@ const AddProduct = () => {
         setInStock(false);
         setImages([null, null, null, null]); // Reset images
       } else {
-        toast.error(data.message)
+        toast.error(data.message);
       }
     } catch (error) {
       console.error("Error adding product:", error);
-      toast.error("Error adding product\nPlease Try again later")
+      toast.error("Error adding product\nPlease Try again later");
     }
-    setLoading(false)
+    setLoading(false);
   };
 
   return (
@@ -138,9 +140,7 @@ const AddProduct = () => {
       <form onSubmit={handleSubmit}>
         {/* Product Name */}
         <div className="mb-4">
-          <label className="block mb-2">
-            Product Name
-          </label>
+          <label className="block mb-2">Product Name</label>
           <input
             type="text"
             id="productName"
@@ -154,9 +154,7 @@ const AddProduct = () => {
 
         {/* Description */}
         <div className="mb-4">
-          <label className="block mb-2">
-            Description
-          </label>
+          <label className="block mb-2">Description</label>
           <textarea
             id="description"
             className="w-full p-2 rounded-md transition-all ring-1 ring-primary/20 focus:ring-primary"
@@ -170,9 +168,7 @@ const AddProduct = () => {
 
         {/* Upload Images */}
         <div className="mb-4">
-          <label className="block mb-2">
-            Upload Images (1-4)
-          </label>
+          <label className="block mb-2">Upload Images (1-4)</label>
           <div className="flex gap-2">
             {[0, 1, 2, 3].map((index) => (
               <label
@@ -204,9 +200,7 @@ const AddProduct = () => {
         <div className="flex flex-col xs:flex-row justify-between gap-2">
           {/* Category */}
           <div className="mb-4">
-            <label className="block mb-2">
-              Category
-            </label>
+            <label className="block mb-2">Category</label>
             <select
               id="category"
               className="w-full p-2 rounded-md transition-all ring-1 ring-primary/20 focus:ring-primary"
@@ -218,15 +212,13 @@ const AddProduct = () => {
               <option value="Women">Women</option>
               <option value="Boy">Boys</option>
               <option value="Girl">Girls</option>
-              <option value="Kid">Kids</option>
+              <option value="Kids">Kids</option>
             </select>
           </div>
 
           {/* Subcategory */}
           <div className="mb-4">
-            <label className="block mb-2">
-              Subcategory
-            </label>
+            <label className="block mb-2">Subcategory</label>
             <select
               id="subCategory"
               className="w-full p-2 rounded-md transition-all ring-1 ring-primary/20 focus:ring-primary"
@@ -250,9 +242,7 @@ const AddProduct = () => {
 
           {/* Price */}
           <div className="mb-4">
-            <label className="block mb-2">
-              Price ($)
-            </label>
+            <label className="block mb-2">Price ($)</label>
             <input
               type="number"
               id="price"
@@ -267,14 +257,14 @@ const AddProduct = () => {
 
         {/* Colors */}
         <div className="mb-4">
-          <label className="block mb-2">
-            Colors
-          </label>
+          <label className="block mb-2">Colors</label>
           <input
             id="colors"
             className="w-full p-2 rounded-md transition-all ring-1 ring-primary/20 focus:ring-primary"
             value={colors}
-            onChange={(e) => setColors(e.target.value.split(',').map(c => c.trim()))}
+            onChange={(e) =>
+              setColors(e.target.value.split(",").map((c) => c.trim()))
+            }
             placeholder={"#FFEB3B, #FF9800, #F44336"}
             required
           />
@@ -285,8 +275,7 @@ const AddProduct = () => {
           <label className="block mb-2">Sizes</label>
           <div className="flex gap-2 flex-wrap">
             {["S", "M", "L", "XL", "One Size"].map((size) => (
-              <label key={size}
-                className="flex items-center gap-1">
+              <label key={size} className="flex items-center gap-1">
                 <input
                   type="checkbox"
                   value={size}
@@ -363,7 +352,7 @@ const AddProduct = () => {
             type="submit"
             className="w-full bg-primary text-white p-2 rounded-md hover:bg-primary/90 transition"
           >
-            {loading ? 'Adding product...' : 'Add Product'}
+            {loading ? "Adding product..." : "Add Product"}
           </button>
         </div>
       </form>

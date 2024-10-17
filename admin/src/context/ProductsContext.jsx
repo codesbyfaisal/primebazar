@@ -7,7 +7,7 @@ export const ProductsContext = createContext();
 function ProductsContextProvider(props) {
   const [loading, setLoading] = useState(false);
   const [productList, setProductList] = useState([]);
-  const [orderList, setOrderList] = useState([])
+  const [orderList, setOrderList] = useState([]);
   const serverUrl = import.meta.env.VITE_BACKEND_URL;
 
   const getProductsList = async () => {
@@ -27,7 +27,9 @@ function ProductsContextProvider(props) {
       }
     } catch (error) {
       console.error(error);
-      toast.error(`Something went wrong: ${error.message || 'Please try again later.'}`);
+      toast.error(
+        `Something went wrong: ${error.message || "Please try again later."}`
+      );
     } finally {
       setLoading(false);
     }
@@ -39,7 +41,7 @@ function ProductsContextProvider(props) {
       const response = await fetch(serverUrl + "/order/list", {
         method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
           token: getToken(),
         },
         body: JSON.stringify({}),
@@ -57,7 +59,9 @@ function ProductsContextProvider(props) {
       }
     } catch (error) {
       console.error(error);
-      toast.error(`Something went wrong: ${error.message || 'Please try again later.'}`);
+      toast.error(
+        `Something went wrong: ${error.message || "Please try again later."}`
+      );
     } finally {
       setLoading(false);
     }
@@ -65,10 +69,10 @@ function ProductsContextProvider(props) {
 
   useEffect(() => {
     if (getToken()) {
-      getProductsList()
-      getOrderList()
+      getProductsList();
+      getOrderList();
     }
-  }, [])
+  }, []);
 
   const value = { getProductsList, loading, productList, orderList, serverUrl };
 

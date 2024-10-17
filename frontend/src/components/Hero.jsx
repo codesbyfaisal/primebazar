@@ -1,20 +1,20 @@
-import React from 'react';
+import React from "react";
 // Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 // import required modules
-import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-import { Link } from 'react-router-dom';
-import { assets } from '../assets/assets';
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { Link } from "react-router-dom";
+import { assets } from "../assets/assets";
 
 function Hero() {
   return (
-    <div className='hero w-full h-[50vh] md:h-[80vh] bg-white'>
+    <div className="hero w-full h-[50vh] md:h-[80vh] bg-white">
       <Swiper
         slidesPerView={1}
         loop={true}
@@ -79,7 +79,7 @@ function Hero() {
           </div>
         </SwiperSlide>
       </Swiper>
-    </div >
+    </div>
   );
 }
 

@@ -1,19 +1,20 @@
-import { useContext } from 'react';
-import { ProductsContext } from '../context/ProductsContext.jsx';
-import { assets } from '../assets/assets.js';
+import { useContext } from "react";
+import { ProductsContext } from "../context/ProductsContext.jsx";
+import { assets } from "../assets/assets.js";
 import { getToken } from "../utils/token.js";
 import { toast } from "react-toastify";
 
 function ProductsList() {
-  const { productList, getProductsList, serverUrl } = useContext(ProductsContext);
+  const { productList, getProductsList, serverUrl } =
+    useContext(ProductsContext);
 
   const removeItem = async (_id) => {
-    return toast.warning('Removing Product is disable')
+    return toast.warning("Removing Product is disable");
     try {
       const response = await fetch(serverUrl + "/product/remove", {
         method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
           token: getToken(),
         },
         body: JSON.stringify({ _id }),
@@ -42,7 +43,9 @@ function ProductsList() {
       ) : (
         <div className="w-full">
           {/* Products List Header */}
-          <div className={`grid grid-cols-[auto,minmax(4rem,auto),repeat(5,minmax(0,1fr))] items-center py-2 gap-4 bg-primary/70 text-white font-medium rounded-md`}>
+          <div
+            className={`grid grid-cols-[auto,minmax(4rem,auto),repeat(5,minmax(0,1fr))] items-center py-2 gap-4 bg-primary/70 text-white font-medium rounded-md`}
+          >
             <p className="px-3">#</p>
             <p>Image</p>
             <p className="col-span-2">Name</p>
@@ -57,7 +60,7 @@ function ProductsList() {
               key={product._id}
               className={`grid grid-cols-[auto,minmax(4rem,auto),repeat(5,minmax(0,1fr))] items-center py-2 gap-5 border-b border-primary/30`}
             >
-              <p className='px-3'>{index + 1}</p>
+              <p className="px-3">{index + 1}</p>
               <div>
                 <img
                   src={product.images[0]}
@@ -69,8 +72,11 @@ function ProductsList() {
               <p>{product.category}</p>
               <p>{product.price}</p>
               <div className="py-2">
-                <button type="button" className='flex items-center justify-center'
-                  onClick={() => removeItem(product._id)}>
+                <button
+                  type="button"
+                  className="flex items-center justify-center"
+                  onClick={() => removeItem(product._id)}
+                >
                   <img src={assets.bin_icon} alt="Delete" className="w-5 h-5" />
                 </button>
               </div>

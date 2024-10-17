@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 function Details() {
   return (
@@ -21,10 +21,9 @@ function Details() {
         <div className="">
           <h2 className="text-xl font-normal mb-6">Contact Details</h2>
         </div>
-
       </div>
     </div>
-  )
+  );
 }
 
-export default Details
+export default Details;

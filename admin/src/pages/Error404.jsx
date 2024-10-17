@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function Error404() {
-  return (
-    <div>
-      console.error
-    </div>
-  )
+  return <div>console.error</div>;
 }
 
-export default Error404
+export default Error404;

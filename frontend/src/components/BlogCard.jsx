@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 const BlogCard = ({ id, title, description, imageUrl, date }) => {
   return (
@@ -19,14 +19,10 @@ const BlogCard = ({ id, title, description, imageUrl, date }) => {
           <Link className="text-lg font-medium group-hover:text-primary transition-colors duration-300">
             {title}
           </Link>
-          <p className="text-sm mt-2 line-clamp-3">
-            {description}
-          </p>
+          <p className="text-sm mt-2 line-clamp-3">{description}</p>
           <div className="flex items-center justify-between mt-4">
             <span className="text-xs">{date}</span>
-            <Link to={`/blog/${id}`}>
-              Read More
-            </Link>
+            <Link to={`/blog/${id}`}>Read More</Link>
           </div>
         </div>
       </div>
