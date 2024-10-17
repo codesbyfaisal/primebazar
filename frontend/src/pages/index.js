@@ -1,0 +1,17 @@
+import Home from './Home'
+import Login from './Login'
+import Product from './Product'
+import Cart from './Cart'
+import Checkout from './Checkout'
+import About from './About'
+import Contact from './Contact'
+import Error404 from './Error404'
+import Products from './Products'
+import Register from './Register'
+import Blogs from './Blogs'
+import Blog from './Blog'
+import Faq from './Faq'
+import Orders from './Orders'
+import Profile from './Profile'
+
+export { Home, Login, Product, Cart, Checkout, About, Contact, Products, Error404, Register, Blogs, Blog, Faq, Orders, Profile }
