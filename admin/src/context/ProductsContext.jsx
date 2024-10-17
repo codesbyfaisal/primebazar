@@ -8,7 +8,7 @@ function ProductsContextProvider(props) {
   const [loading, setLoading] = useState(false);
   const [productList, setProductList] = useState([]);
   const [orderList, setOrderList] = useState([])
-  const serverUrl = 'http://localhost:5000'
+  const serverUrl = import.meta.env.VITE_BACKEND_URL;
 
   const getProductsList = async () => {
     setLoading(true);
