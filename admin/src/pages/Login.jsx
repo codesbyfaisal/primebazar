@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { ProductsContext } from "../context/ProductsContext";
 
 const Login = () => {
-  const { serverUrl } = useContext(ProductsContext);
+  const { serverUrl,getOrderList,getProductsList } = useContext(ProductsContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);

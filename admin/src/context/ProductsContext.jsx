@@ -74,7 +74,14 @@ function ProductsContextProvider(props) {
     }
   }, []);
 
-  const value = { getProductsList, loading, productList, orderList, serverUrl };
+  const value = {
+    getOrderList,
+    getProductsList,
+    loading,
+    productList,
+    orderList,
+    serverUrl,
+  };
 
   return (
     <ProductsContext.Provider value={value}>
