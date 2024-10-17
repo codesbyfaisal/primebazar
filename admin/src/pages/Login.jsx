@@ -28,6 +28,8 @@ const Login = () => {
       if (data.success) {
         setToken(data.token)
         toast.success(data.message)
+        getProductsList()
+        getOrderList()
         navigate('/');
       }
       else toast.error(data.message)

@@ -43,7 +43,7 @@ function Sidebar() {
         <img src={assets.products_icon} alt="All Products" className="w-7 min-w-7"
           onDoubleClick={() => setShowLabel(!showLabel)} />
         <span className={showLabel ? '' : 'hidden'}
-          onDoubleClick={() => setShowLabel(!showLabel)} >All Products</span>
+          onDoubleClick={() => setShowLabel(!showLabel)} >Products List</span>
       </NavLink>
 
       <NavLink

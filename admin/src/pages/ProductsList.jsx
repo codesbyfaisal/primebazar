@@ -8,6 +8,7 @@ function ProductsList() {
   const { productList, getProductsList, serverUrl } = useContext(ProductsContext);
 
   const removeItem = async (_id) => {
+    return toast.warning('Removing Product is disable')
     try {
       const response = await fetch(serverUrl + "/product/remove", {
         method: "POST",
@@ -68,7 +69,8 @@ function ProductsList() {
               <p>{product.category}</p>
               <p>{product.price}</p>
               <div className="py-2">
-                <button type="button" className='flex items-center justify-center' onClick={() => removeItem(product._id)}>
+                <button type="button" className='flex items-center justify-center'
+                  onClick={() => removeItem(product._id)}>
                   <img src={assets.bin_icon} alt="Delete" className="w-5 h-5" />
                 </button>
               </div>
