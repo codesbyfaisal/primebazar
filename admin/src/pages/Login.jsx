@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { setToken } from '../utils/token.js';
 import { toast } from 'react-toastify';
 import { ProductsContext } from '../context/ProductsContext';
@@ -12,6 +12,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
+    console.log(1);
     e.preventDefault();
     setIsSubmitting(true);
     try {

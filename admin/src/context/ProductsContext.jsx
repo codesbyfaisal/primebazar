@@ -64,8 +64,10 @@ function ProductsContextProvider(props) {
   };
 
   useEffect(() => {
-    getProductsList()
-    getOrderList()
+    if (getToken()) {
+      getProductsList()
+      getOrderList()
+    }
   }, [])
 
   const value = { getProductsList, loading, productList, orderList, serverUrl };
